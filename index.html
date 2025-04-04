@@ -16,44 +16,112 @@
     ></script>
     <link rel="stylesheet" href="styles.css" />
     <title>Emilio Pacheco</title>
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 200vh; /* Agregar altura para probar el scroll */
+            background-color: #f5f5f5;
+        }
+
+        /* Barra de navegación */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%; /* Tamaño inicial ancho */
+            max-width: 1200px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 30px;
+            border-radius: 15px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo cuando se hace scroll */
+        .navbar.scrolled {
+            width: 60%; /* Se reduce el tamaño horizontalmente */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Logo */
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Menú de navegación */
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        /* Cuando la barra se hace más pequeña, mover elementos hacia el centro */
+        .navbar.scrolled .nav-links,
+        .navbar.scrolled .logo,
+        .navbar.scrolled .purchase-btn {
+            transform: scale(0.9); /* Se encogen un poco */
+        }
+    </style>
   </head>
   <body class="light" id="top">
     <header class="header center">
-      <h3>
-        <a href="h" class="link"
-          >JEPC.</a
-        >
-      </h3>
-
-      <nav class="nav center">
-        <ul class="nav__list center">
-          <li class="nav__list-item">
-            <a class="link link--nav" href="#Educación">Educación</a>
-          </li>
-          <li class="nav__list-item">
-            <a class="link link--nav" href="#Proyectos">Proyectos</a>
-          </li>
-          <li class="nav__list-item">
-            <a class="link link--nav" href="#Skills">Skills</a>
-          </li>
-          <li class="nav__list-item">
-            <a class="link link--nav" href="#Contacto">Contacto</a>
-          </li>
-        </ul>
-
+      <div id="navbar" class="navbar">
+        <div class="logo">
+          <a href="h" class="link">JEPC.</a>
+        </div>
+        <nav class="nav center">
+          <ul class="nav__list center nav-links">
+            <li class="nav__list-item">
+              <a class="link link--nav" href="#Educación">Educación</a>
+            </li>
+            <li class="nav__list-item">
+              <a class="link link--nav" href="#Proyectos">Proyectos</a>
+            </li>
+            <li class="nav__list-item">
+              <a class="link link--nav" href="#Skills">Skills</a>
+            </li>
+            <li class="nav__list-item">
+              <a class="link link--nav" href="#Contacto">Contacto</a>
+            </li>
+          </ul>
+        </nav>
         <button type="button" aria-label="toggle theme" class="btn btn--icon">
           <i aria-hidden="true" id="btn-theme" class="fas fa-moon"></i>
         </button>
-
-        <button
-          type="button"
-          aria-label="toggle navigation"
-          class="btn btn--icon nav__hamburger"
-        >
-          <i aria-hidden="true" class="fas fa-bars"></i>
-        </button>
-      </nav>
+      </div>
     </header>
+
+    <script>
+        // Evento de scroll para reducir el tamaño de la barra de navegación horizontalmente
+        window.addEventListener("scroll", function () {
+            const navbar = document.getElementById("navbar");
+
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+    </script>
 
     <main>
       <!-- About -->
